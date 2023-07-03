@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:portfolio/appBar.dart';
 import 'package:portfolio/constValues.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'dart:js' as js;
+import 'package:url_launcher/url_launcher.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -13,10 +14,7 @@ class HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     final width = size.width;
-    final height = size.height;
-    return Scaffold(
-      appBar: (width < mobileWidth) ? navBarMobile() : navBarDesktop(),
-      body: Container(
+    return Container(
         color: white,
         child: Center(
           child: Column(
@@ -30,7 +28,7 @@ class HomePageState extends State<HomePage> {
               Padding(
                 padding: EdgeInsets.all(25),
                 child: Container(
-                  width: (width<mobileWidth)?width/1.5:width/3,
+                  width: (width < mobileWidth) ? width / 1.5 : width / 3,
                   child: Text(
                     "Développeur Windev, Webdev et Windev Mobile chez Sesame Informatique à Dinan, agé de 23 ans, venant de Saint-Malo. J'aime lire, la musique, le football et les jeux vidéos.",
                     textAlign: TextAlign.center,
@@ -68,20 +66,7 @@ class HomePageState extends State<HomePage> {
             ],
           ),
         ),
-      ),
-      drawer: (width < mobileWidth) ? appDrawer() : null,
-      bottomNavigationBar: Container(
-        padding: EdgeInsets.all(5),
-        height: 50.0,
-        color: white,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-          IconButton(onPressed: (){}, icon: FaIcon(FontAwesomeIcons.github)),
-          IconButton(onPressed: (){}, icon: FaIcon(FontAwesomeIcons.linkedin)),
-          IconButton(onPressed: (){}, icon: Icon(Icons.mail)),
-        ]),
-      ),
-    );
+      );
   }
+
 }
