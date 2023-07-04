@@ -65,6 +65,9 @@ flutter:
      - images/iutLannion.png
      - images/iutNantes.png
      - images/lyceeMaupertuis.png
+     - images/sesameInformatique.png
+     - images/BCE.png
+     
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

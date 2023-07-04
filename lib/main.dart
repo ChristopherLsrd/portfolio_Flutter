@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:portfolio/homePage.dart';
 import 'package:portfolio/schoolPage.dart';
+import 'package:portfolio/workPage.dart';
 import 'dart:js' as js;
 import 'dart:ui';
 import 'package:url_launcher/url_launcher.dart';
@@ -49,7 +50,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  Widget displayed=HomePage();
+  Widget displayed = HomePage();
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -94,177 +95,187 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   AppBar navBarMobile() {
-  return AppBar(
-    iconTheme: IconThemeData(color: black),
-    backgroundColor: white,
-  );
-}
+    return AppBar(
+      iconTheme: IconThemeData(color: black),
+      backgroundColor: white,
+    );
+  }
 
-AppBar navBarDesktop(BuildContext context) {
-  return AppBar(
-    title: Text(
-      "Christopher Lessirard",
-      style: TextStyle(color: black),
-    ),
-    backgroundColor: white,
-    actions: [
-      TextButton(
-        onPressed: () {
-          setState(() {
-              displayed=displayedPage(1);
-            });
-        },
-        child: Padding(
-          padding: EdgeInsets.all(10),
-          child: iconText(Icons.home, "Accueil"),
-        ),
-        style: TextButton.styleFrom(foregroundColor: black),
+  AppBar navBarDesktop(BuildContext context) {
+    return AppBar(
+      title: Text(
+        "Christopher Lessirard",
+        style: TextStyle(color: black),
       ),
-      TextButton(
+      backgroundColor: white,
+      actions: [
+        TextButton(
           onPressed: () {
             setState(() {
-              displayed=displayedPage(2);
+              displayed = displayedPage(1);
             });
           },
           child: Padding(
             padding: EdgeInsets.all(10),
-            child: iconText(Icons.school, "Formations"),
+            child: iconText(Icons.home, "Accueil"),
           ),
-          style: TextButton.styleFrom(foregroundColor: black)),
-      TextButton(
-          onPressed: () {},
-          child: Padding(
-            padding: EdgeInsets.all(10),
-            child: iconText(Icons.work, "Expériences"),
-          ),
-          style: TextButton.styleFrom(foregroundColor: black)),
-      TextButton(
-          onPressed: () {},
-          child: Padding(
-            padding: EdgeInsets.all(10),
-            child: iconText(Icons.computer, "Projets"),
-          ),
-          style: TextButton.styleFrom(foregroundColor: black)),
-      TextButton(
-          onPressed: () {},
-          child: Padding(
-            padding: EdgeInsets.all(10),
-            child: iconText(Icons.settings, "Compétences"),
-          ),
-          style: TextButton.styleFrom(foregroundColor: black)),
-    ],
-  );
-}
-
-Drawer appDrawer(BuildContext context) {
-  return Drawer(
-    backgroundColor: white,
-    child: ListView(
-      // Important: Remove any padding from the ListView.
-      padding: EdgeInsets.zero,
-      children: [
-        DrawerHeader(
-          decoration: BoxDecoration(
-            color: black,
-          ),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                'Christopher Lessirard',
-                style: TextStyle(
-                    color: white, fontSize: 40, fontWeight: FontWeight.bold),
-              ),
-            ],
-          ),
+          style: TextButton.styleFrom(foregroundColor: black),
         ),
-        ListTile(
-          leading: Icon(
-            Icons.home,
-            color: black,
-          ),
-          title: const Text('Accueil'),
-          onTap: () {
-            setState(() {
-              displayed=displayedPage(1);
-              Navigator.pop(context);
-            });
-          },
-        ),
-        ListTile(
-          leading: Icon(
-            Icons.school,
-            color: black,
-          ),
-          title: const Text('Formations'),
-          onTap: () {
-            setState(() {
-              displayed=displayedPage(2);
-              Navigator.pop(context);
-            });
-          },
-        ),
-        ListTile(
-          leading: Icon(
-            Icons.work,
-            color: black,
-          ),
-          title: const Text('Expériences'),
-          onTap: () {
-            //Navigator.pop(context);
-          },
-        ),
-        ListTile(
-          leading: Icon(
-            Icons.computer,
-            color: black,
-          ),
-          title: const Text('Projets'),
-          onTap: () {
-            //Navigator.pop(context);
-          },
-        ),
-        ListTile(
-          leading: Icon(
-            Icons.settings,
-            color: black,
-          ),
-          title: const Text('Compétences'),
-          onTap: () {
-            //Navigator.pop(context);
-          },
-        ),
+        TextButton(
+            onPressed: () {
+              setState(() {
+                displayed = displayedPage(2);
+              });
+            },
+            child: Padding(
+              padding: EdgeInsets.all(10),
+              child: iconText(Icons.school, "Formations"),
+            ),
+            style: TextButton.styleFrom(foregroundColor: black)),
+        TextButton(
+            onPressed: () {
+              setState(() {
+                displayed = displayedPage(3);
+              });
+            },
+            child: Padding(
+              padding: EdgeInsets.all(10),
+              child: iconText(Icons.work, "Expériences"),
+            ),
+            style: TextButton.styleFrom(foregroundColor: black)),
+        TextButton(
+            onPressed: () {},
+            child: Padding(
+              padding: EdgeInsets.all(10),
+              child: iconText(Icons.computer, "Projets"),
+            ),
+            style: TextButton.styleFrom(foregroundColor: black)),
+        TextButton(
+            onPressed: () {},
+            child: Padding(
+              padding: EdgeInsets.all(10),
+              child: iconText(Icons.settings, "Compétences"),
+            ),
+            style: TextButton.styleFrom(foregroundColor: black)),
       ],
-    ),
-  );
-}
-
-Container iconText(IconData icon, String text) {
-  return Container(
-    child: Row(
-      children: [
-        Icon(icon),
-        Padding(
-          padding: EdgeInsets.only(left: 5),
-          child: Text(text),
-        )
-      ],
-    ),
-  );
-}
-
-Widget displayedPage(int page) {
-  final display;
-  switch (page) {
-    case 1:
-      display = HomePage();
-      break;
-    case 2:
-      display = SchoolPage();
-      break;
-    default:
-      display = HomePage();
+    );
   }
-  return display;
-}
+
+  Drawer appDrawer(BuildContext context) {
+    return Drawer(
+      backgroundColor: white,
+      child: ListView(
+        // Important: Remove any padding from the ListView.
+        padding: EdgeInsets.zero,
+        children: [
+          DrawerHeader(
+            decoration: BoxDecoration(
+              color: black,
+            ),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  'Christopher Lessirard',
+                  style: TextStyle(
+                      color: white, fontSize: 40, fontWeight: FontWeight.bold),
+                ),
+              ],
+            ),
+          ),
+          ListTile(
+            leading: Icon(
+              Icons.home,
+              color: black,
+            ),
+            title: const Text('Accueil'),
+            onTap: () {
+              setState(() {
+                displayed = displayedPage(1);
+                Navigator.pop(context);
+              });
+            },
+          ),
+          ListTile(
+            leading: Icon(
+              Icons.school,
+              color: black,
+            ),
+            title: const Text('Formations'),
+            onTap: () {
+              setState(() {
+                displayed = displayedPage(2);
+                Navigator.pop(context);
+              });
+            },
+          ),
+          ListTile(
+            leading: Icon(
+              Icons.work,
+              color: black,
+            ),
+            title: const Text('Expériences'),
+            onTap: () {
+              setState(() {
+                displayed = displayedPage(3);
+                Navigator.pop(context);
+              });
+            },
+          ),
+          ListTile(
+            leading: Icon(
+              Icons.computer,
+              color: black,
+            ),
+            title: const Text('Projets'),
+            onTap: () {
+              //Navigator.pop(context);
+            },
+          ),
+          ListTile(
+            leading: Icon(
+              Icons.settings,
+              color: black,
+            ),
+            title: const Text('Compétences'),
+            onTap: () {
+              //Navigator.pop(context);
+            },
+          ),
+        ],
+      ),
+    );
+  }
+
+  Container iconText(IconData icon, String text) {
+    return Container(
+      child: Row(
+        children: [
+          Icon(icon),
+          Padding(
+            padding: EdgeInsets.only(left: 5),
+            child: Text(text),
+          )
+        ],
+      ),
+    );
+  }
+
+  Widget displayedPage(int page) {
+    final display;
+    switch (page) {
+      case 1:
+        display = HomePage();
+        break;
+      case 2:
+        display = SchoolPage();
+        break;
+      case 3:
+        display = WorkPage();
+        break;
+      default:
+        display = HomePage();
+    }
+    return display;
+  }
 }

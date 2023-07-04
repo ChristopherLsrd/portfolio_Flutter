@@ -2,39 +2,40 @@ import 'package:flutter/material.dart';
 import 'cardInfo.dart';
 import 'constValues.dart';
 
-class SchoolPage extends StatefulWidget {
+class WorkPage extends StatefulWidget {
   @override
-  SchoolPageState createState() => SchoolPageState();
+  WorkPageState createState() => WorkPageState();
 }
 
-class SchoolPageState extends State<SchoolPage> {
-  List<CardInfo> school = [
+class WorkPageState extends State<WorkPage> {
+  List<CardInfo> work = [
     CardInfo(
-        srcImage: "images/iutNantes.png",
-        title: "LP MiAR",
-        years: "2021 - 2022",
-        infos: ["Java", "Android Studio", "Go", "React", "Javascript", "SQL","TOEIC : 765"],
-        complement: "Obtenue"),
+        srcImage: "images/sesameInformatique.png",
+        title: "Développeur Windev",
+        years: "Septembre 2022 -",
+        infos: [
+          "Logiciel de comptabilité simplifié",
+          "Site web de création de protocoles de sécurité",
+          "Utilisation de l'API Microsoft Graph pour la synchronisation d'agendas",
+        ],
+        complement: ""),
     CardInfo(
-        srcImage: "images/lyceeMaupertuis.png",
-        title: "BTS SNIR",
-        years: "2019 - 2021",
-        infos: ["C", "C++", "UML", "CCNA", "Modèle OSI"],
-        complement: "Obtenu"),
+        srcImage: "images/sesameInformatique.png",
+        title: "Développeur Windev junior",
+        years: "Septembre 2021 - Septembre 2022",
+        infos: [
+          "Création d'un site web de prise de commande pour un évènement d'un client",
+          "Ajout d'un module de scan de code EAN sur une application d'inventaire",
+        ],
+        complement: "Alternance"),
     CardInfo(
-        srcImage: "images/iutLannion.png",
-        title: "DUT Informatique",
-        years: "2018 - 2019",
-        infos: ["C", "Java", "UML", "SQL", "HTML5/CSS3"],
-        complement: "Formation non terminée"),
-    CardInfo(
-        srcImage: "images/lyceeMaupertuis.png",
-        title: "Bac STI2D",
-        years: "2016 - 2018",
-        infos: ["Arduino"],
-        complement: "Obtenu : Mention Bien")
+        srcImage: "images/BCE.png",
+        title: "Employé de lingerie",
+        years:
+            "Juillet 2018 - Août 2018\nJuillet 2019 - Août 2019\nJuillet 2020 - Août 2020\nJuillet 2021 - Août 2021",
+        infos: ["Rangement de serviettes dans des chariots"],
+        complement: "Emploi saisonnier"),
   ];
-
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -42,7 +43,6 @@ class SchoolPageState extends State<SchoolPage> {
     return Container(
         color: white,
         child: Center(
-
             child: SingleChildScrollView(
           scrollDirection:
               (width < mobileWidth) ? Axis.vertical : Axis.horizontal,
@@ -53,7 +53,6 @@ class SchoolPageState extends State<SchoolPage> {
                     displayCards(),
                   ],
                 )
-                
               : Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -68,7 +67,7 @@ class SchoolPageState extends State<SchoolPage> {
     final width = size.width;
     List<Widget> cardList = [];
     Container c;
-    school.forEach((element) {
+    work.forEach((element) {
       c = Container(
           height: (width < mobileWidth) ? 500 : 600,
           width: (width < mobileWidth) ? 400 : 400,
@@ -116,9 +115,11 @@ class SchoolPageState extends State<SchoolPage> {
           Icon(
             Icons.keyboard_arrow_right,
           ),
-          Text(
-            element,
-            textAlign: TextAlign.center,
+          Flexible(
+            child: Text(
+              element,
+              textAlign: TextAlign.center,
+            ),
           ),
         ],
       );
