@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:portfolio/homePage.dart';
 import 'package:portfolio/schoolPage.dart';
+import 'package:portfolio/skillPage.dart';
 import 'package:portfolio/workPage.dart';
 import 'dart:js' as js;
 import 'dart:ui';
@@ -151,7 +152,11 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             style: TextButton.styleFrom(foregroundColor: black)),
         TextButton(
-            onPressed: () {},
+            onPressed: () {
+              setState(() {
+                displayed = displayedPage(5);
+              });
+            },
             child: Padding(
               padding: EdgeInsets.all(10),
               child: iconText(Icons.settings, "Compétences"),
@@ -239,7 +244,10 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             title: const Text('Compétences'),
             onTap: () {
-              //Navigator.pop(context);
+              setState(() {
+                displayed = displayedPage(5);
+                Navigator.pop(context);
+              });
             },
           ),
         ],
@@ -273,6 +281,12 @@ class _MyHomePageState extends State<MyHomePage> {
       case 3:
         display = WorkPage();
         break;
+      /*case 4:
+        
+        break;  */
+      case 5:
+        display = SkillPage();
+        break;  
       default:
         display = HomePage();
     }

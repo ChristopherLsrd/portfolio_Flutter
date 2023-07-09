@@ -71,7 +71,7 @@ class SchoolPageState extends State<SchoolPage> {
     school.forEach((element) {
       c = Container(
           height: (width < mobileWidth) ? 500 : 600,
-          width: (width < mobileWidth) ? 400 : 400,
+          width: 400,
           child: Card(
             elevation: 10,
             child: Column(
