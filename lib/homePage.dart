@@ -46,7 +46,11 @@ class HomePageState extends State<HomePage> {
                           width: 0.2,
                           color: black,
                         )),
-                    onPressed: () {},
+                    onPressed: () {
+                      js.context.callMethod("open", [
+                  "https://github.com/ChristopherLsrd/portfolio_flutter/blob/main/images/HTML_CSS.png "
+                ]);
+                    },
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [

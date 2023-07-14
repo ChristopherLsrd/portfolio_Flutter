@@ -34,7 +34,6 @@ class MyApp extends StatelessWidget {
 }
 
 class CustomScrollBehavior extends MaterialScrollBehavior {
-  // Override behavior methods like buildOverscrollIndicator and buildScrollbar
   @override
   Set<PointerDeviceKind> get dragDevices => {
         PointerDeviceKind.touch,
@@ -75,7 +74,7 @@ class _MyHomePageState extends State<MyHomePage> {
           IconButton(
               onPressed: () {
                 js.context.callMethod("open", [
-                  "https://www.linkedin.com/in/christopher-lessirard-661436172 "
+                  "https://github.com/ChristopherLsrd/portfolio_flutter/blob/main/files/CV_ChristopherLessirard.pdf"
                 ]);
               },
               icon: FaIcon(FontAwesomeIcons.linkedin)),
