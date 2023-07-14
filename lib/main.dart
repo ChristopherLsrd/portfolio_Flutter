@@ -74,7 +74,7 @@ class _MyHomePageState extends State<MyHomePage> {
           IconButton(
               onPressed: () {
                 js.context.callMethod("open", [
-                  "https://github.com/ChristopherLsrd/portfolio_flutter/blob/main/files/CV_ChristopherLessirard.pdf"
+                  "https://www.linkedin.com/in/christopher-lessirard-661436172 "
                 ]);
               },
               icon: FaIcon(FontAwesomeIcons.linkedin)),
