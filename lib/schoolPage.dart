@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'cardInfo.dart';
 import 'constValues.dart';
+import 'dart:js' as js;
 
 class SchoolPage extends StatefulWidget {
   @override
@@ -10,28 +11,38 @@ class SchoolPage extends StatefulWidget {
 class SchoolPageState extends State<SchoolPage> {
   List<CardInfo> school = [
     CardInfo(
-        srcImage: "images/iutNantes.png",
+        srcImage: nantesLogo,
         title: "LP MiAR",
         years: "2021 - 2022",
-        infos: ["Java", "Android Studio", "Go", "React", "Javascript", "SQL","TOEIC : 765"],
+        infos: ["Java", "Go", "React", "SQL", "TOEIC : 765"],
+        link: "https://iutnantes.univ-nantes.fr/",
         complement: "Obtenue"),
     CardInfo(
-        srcImage: "images/lyceeMaupertuis.png",
+        srcImage: maupertuisLogo,
         title: "BTS SNIR",
         years: "2019 - 2021",
         infos: ["C", "C++", "UML", "CCNA", "Modèle OSI"],
+        link: "https://www.lyceemaupertuis.bzh/",
         complement: "Obtenu"),
     CardInfo(
-        srcImage: "images/iutLannion.png",
+        srcImage: lannionLogo,
         title: "DUT Informatique",
         years: "2018 - 2019",
         infos: ["C", "Java", "UML", "SQL", "HTML5/CSS3"],
+        link: "https://iut-lannion.univ-rennes.fr/",
         complement: "Formation non terminée"),
     CardInfo(
-        srcImage: "images/lyceeMaupertuis.png",
+        srcImage: maupertuisLogo,
         title: "Bac STI2D",
         years: "2016 - 2018",
-        infos: ["Arduino"],
+        infos: [
+          "Arduino",
+          "SysML",
+          "HTML5/CSS3",
+          "Modélisation 3D",
+          "Conception d'un skate électrique"
+        ],
+        link: "https://www.lyceemaupertuis.bzh/",
         complement: "Obtenu : Mention Bien")
   ];
 
@@ -42,7 +53,6 @@ class SchoolPageState extends State<SchoolPage> {
     return Container(
         color: white,
         child: Center(
-
             child: SingleChildScrollView(
           scrollDirection:
               (width < mobileWidth) ? Axis.vertical : Axis.horizontal,
@@ -53,7 +63,6 @@ class SchoolPageState extends State<SchoolPage> {
                     displayCards(),
                   ],
                 )
-                
               : Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -83,10 +92,26 @@ class SchoolPageState extends State<SchoolPage> {
                   width: (width < mobileWidth) ? 100 : 150,
                   fit: BoxFit.contain,
                 ),
-                Text(
-                  element.title,
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
-                ),
+                (element.link != "")
+                    ? TextButton(
+                        onPressed: () {
+                          js.context.callMethod("open", [element.link]);
+                        },
+                        child: Text(
+                          element.title,
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 16,
+                              color: Colors.black,
+                              decoration: TextDecoration.underline),
+                          textAlign: TextAlign.center,
+                        ))
+                    : Text(
+                        element.title,
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 16),
+                        textAlign: TextAlign.center,
+                      ),
                 Text(element.years),
                 Column(
                   mainAxisSize: MainAxisSize.max,

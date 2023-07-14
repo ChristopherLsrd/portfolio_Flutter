@@ -23,7 +23,7 @@ class HomePageState extends State<HomePage> {
             children: [
               CircleAvatar(
                 radius: 100,
-                backgroundImage: AssetImage("images/circle_photo.jpg"),
+                backgroundImage: AssetImage(circlePhoto),
               ),
               Padding(
                 padding: EdgeInsets.all(25),
