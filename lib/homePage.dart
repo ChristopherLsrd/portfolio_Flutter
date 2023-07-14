@@ -48,7 +48,7 @@ class HomePageState extends State<HomePage> {
                       )),
                   onPressed: () {
                     js.context.callMethod("open", [
-                      "https://christopher-lessirard.fr/assets/CV_ChristopherLessirard.bd0210f2.pdf"
+                      "https://christopher-lessirard.fr/assets/CV_ChristopherLessirard.pdf"
                     ]);
                   },
                   child: Row(
